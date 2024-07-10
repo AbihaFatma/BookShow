@@ -8,21 +8,21 @@ const LastBooking = () => {
 
   const { handleGetBooking, lastBooking } = context;
   useEffect(() => {
-    handleGetBooking;
-  }, []);
+    handleGetBooking();
+  }, [handleGetBooking]);
   return (
     <div className="last_booking_details_container_main">
-      <h2 className="last_booking_details_header">Last Booking : </h2>
+      <h2 className="last_booking_details_header">Last Booking Details: </h2>
       {lastBooking ? (
         <>
           <div className="seats_container">
             <p className="seats_header">Seats:</p>
             <ul className="seats">
-              {seats.map((seat, index) => {
+              {seats.map((seat, index) => (
                 <li className="seat_value" key={index}>
                   {seat} : {Number(lastBooking.seats[seat])}
-                </li>;
-              })}
+                </li>
+              ))}
             </ul>
           </div>
           <p className="slot" style={{ textAlign: "left" }}>

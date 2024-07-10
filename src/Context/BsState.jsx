@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import BsContext from "./BsContext";
+
 const BsState = (props) => {
+  const url = "https://localhost:5173/api";
   const [errorPopup, setErrorPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [movie, setMovie] = useState("");
@@ -17,7 +19,7 @@ const BsState = (props) => {
   const [lastBooking, setLastBooking] = useState(null);
 
   const handlePostBooking = async () => {
-    const response = await fetch(`https://localhost:8080/api/booking`, {
+    const response = await fetch(`${url}/`, {
       method: "Post",
       headers: {
         "content-type": "application/json",
@@ -36,7 +38,7 @@ const BsState = (props) => {
     }
   };
   const handleGetBooking = async () => {
-    const response = await fetch(`https://localhost:8080/api/booking`, {
+    const response = await fetch(`${url}/`, {
       method: "Get",
     });
 
@@ -45,18 +47,18 @@ const BsState = (props) => {
   };
 
   useEffect(() => {
-    const movie = window.localStorage.getItem("movie");
-    const slot = window.localStorage.getItem("slot");
-    const seats = JSON.parse(window.localStorage.getItem("seats"));
+    const Savedmovie = window.localStorage.getItem("movie");
+    const Savedslot = window.localStorage.getItem("slot");
+    const Savedseats = JSON.parse(window.localStorage.getItem("seats"));
 
-    if (movie) {
-      setMovie(movie);
+    if (Savedmovie) {
+      setMovie(Savedmovie);
     }
-    if (slot) {
-      setTime(slot);
+    if (Savedslot) {
+      setTime(Savedslot);
     }
-    if (seats) {
-      changeNoOfSeats(seats);
+    if (Savedseats) {
+      changeNoOfSeats(Savedseats);
     }
   }, []);
 
