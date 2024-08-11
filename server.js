@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const ticketRoutes = require("./routes");
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
+
+const dotenv = require("dotenv");
 dotenv.config()
 
 const connectDB = require("./dbConnection");
